@@ -1,0 +1,41 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        Registration
+    </div>
+    <div class='panel-body'>
+        <div *ngIf="!msg">
+            <form novalidate (ngSubmit)="onSubmit(userRegistrationForm)" [formGroup]="userRegistrationForm">
+                <div class="form-group">
+                    <div>
+                        <span>Username</span>
+                        <input type="text" class="validate form-control" [pattern]="emailPattern" placeholder="User name (e.g user@getdevs.com)" formControlName="UserName">
+                    </div>
+                    <div>
+                        <span>Password</span>
+                        <input type="password" class="validate form-control" placeholder="Password (minimum 8 characters)" required minlength="8" formControlName="Password">
+                    </div>
+                    <div>
+                        <span>First name</span>
+                        <input type="text" class="form-control" placeholder="First Name" formControlName="FirstName">
+                    </div>
+                    <div>
+                        <span>Last name</span>
+                        <input type="text" class="form-control" placeholder="Last Name" formControlName="LastName">
+                    </div>
+                </div>
+                <div>
+                    <a class="btn btn-default" (click)="resetForm()">Clear</a>
+                    <button [disabled]="userRegistrationForm.invalid" class="btn btn-primary" type="submit">Submit</button>
+                    <img src="../../images/loading.gif" width="32" height="32" *ngIf="indLoading">
+                </div>
+            </form>
+            <div>
+            </div>
+        </div>
+        <div *ngIf="msg" role="alert" class="alert alert-info">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{msg}}
+        </div>
+    </div>
+</div>

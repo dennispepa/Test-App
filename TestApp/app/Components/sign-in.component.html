@@ -1,0 +1,33 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        Login
+    </div>
+    <div class='panel-body'>
+        <div>
+            <form novalidate (ngSubmit)="onSubmit(loginForm)" [formGroup]="loginForm">
+                <div class="form-group">
+                    <div>
+                        <span>Username</span>
+                        <input type="text" class="form-control" placeholder="User name" formControlName="UserName">
+                    </div>
+                    <div>
+                        <span>Password</span>
+                        <input class="form-control" type="password" placeholder="Password" formControlName="Password">
+                    </div>
+                </div>
+                <div>
+                    <a class="btn btn-default" (click)="resetForm()">Clear</a>
+                    <button [disabled]="loginForm.invalid" class="btn btn-primary" type="submit">Submit</button>
+                    <img src="../../images/loading.gif" width="32" height="32" *ngIf="indLoading">
+                </div>
+            </form>
+            <div>
+            </div>
+        </div>
+        <div *ngIf="msg" role="alert" class="alert alert-info">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{msg}}
+        </div>
+    </div>
+</div>
